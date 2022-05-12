@@ -5,8 +5,8 @@ let firstCard,secondCard;
 let lockBoard = false;
 
 function flipCard(){
-    if (lockBoard) return;
-    if (firstCard == this) return;
+    if (lockBoard) return; // при быстром нажать на 3 карты, 1 карта остаётся открытой - это убирает эту проблему
+    if (firstCard == this) return; // не даёт дважды нажать на одну карту
     this.classList.add("flip");
     if(!hasFlipped){
         // first clicl
@@ -55,6 +55,6 @@ function resetBoard(){
         let randomPos = Math.floor(Math.random()*12);
         card.style.order = randomPos;
     })
-})();
+})() // сразу вызовет эту функцию
 
 cards.forEach((card) => {card.addEventListener("click", flipCard)})
